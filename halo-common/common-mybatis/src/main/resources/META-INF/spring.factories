@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.evildoer.common.mybatis.config.MybatisPlusConfig,\
+  com.evildoer.common.mybatis.handler.CustomMetaObjectHandler
+

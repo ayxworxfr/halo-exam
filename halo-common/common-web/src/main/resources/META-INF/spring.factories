@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.evildoer.common.web.config.WebMvcConfig,\
+  com.evildoer.common.web.exception.GlobalExceptionHandler

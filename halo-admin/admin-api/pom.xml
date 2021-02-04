@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>halo-admin</artifactId>
+        <groupId>com.evildoer.exam</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>admin-api</artifactId>
+
+    <properties>
+        <halo.version>1.0.0</halo.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.evildoer.exam</groupId>
+            <artifactId>common-web</artifactId>
+            <version>${halo.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.evildoer.exam</groupId>
+            <artifactId>common-mybatis</artifactId>
+            <version>${halo.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.evildoer.exam</groupId>
+            <artifactId>common-knife4j</artifactId>
+            <version>${halo.version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,64 @@
+# halo-gateway
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: 'http://localhost:8000/getPublicKey'
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: 
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 启用服务发现
+          lower-case-service-id: true
+      routes:
+        - id: halo-auth
+          uri: lb://halo-auth
+          predicates:
+            - Path=/halo-auth/**
+          filters:
+            - StripPrefix=1
+        - id: halo-admin
+          uri: lb://halo-admin
+          predicates:
+            - Path=/halo-admin/**
+          filters:
+            - StripPrefix=1
+        - id: mall-oms
+          uri: lb://mall-oms
+          predicates:
+            - Path=/mall-oms/**
+          filters:
+            - StripPrefix=1
+        - id: mall-pms
+          uri: lb://mall-pms
+          predicates:
+            - Path=/mall-pms/**
+          filters:
+            - StripPrefix=1
+        - id: mall-ums
+          uri: lb://mall-ums
+          predicates:
+            - Path=/mall-ums/**
+          filters:
+            - StripPrefix=1
+        - id: mall-sms
+          uri: lb://mall-sms
+          predicates:
+            - Path=/mall-sms/**
+          filters:
+            - StripPrefix=1
+
+# 配置白名单路径(无需登录)
+whitelist:
+  urls:
+      - "/halo-auth/oauth/token"
+      - "/doc.html"
+
+# 是否演示环境
+demo: false
