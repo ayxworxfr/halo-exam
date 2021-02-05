@@ -22,12 +22,34 @@
     </properties>
 
     <dependencies>
+        <!-- SpringCloud ailibaba sentinel-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <!-- SpringCloud ailibaba sentinel-datasource-nacos 持久化需要用到-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
+
+        <!--stream rabbit -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>
+
+        <!-- sleuth+zipkin-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.evildoer.exam</groupId>
             <artifactId>common-core</artifactId>
             <version>${halo.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>

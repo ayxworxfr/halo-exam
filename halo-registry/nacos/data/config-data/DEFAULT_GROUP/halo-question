@@ -1,5 +1,44 @@
 # halo-question
 spring:
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      # 采样率值介于0到1之间, 1则表示全部采集
+      probability: 1
+  cloud:
+    stream:
+      binders: #在此处配置要绑定的rabbitmq的服务信息
+        defaultRabbit: #表示定义的名称，用于binding整合
+          type: rabbit #消息组件类型
+          environment: #设置rabbitmq的相关环境配置
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings: #服务的整合处理
+        input: #这个名字是一个通道的名称
+          destination: examExchange #表示要使用的Exchange名称定义
+          content-type: application/json #设置消息类型，本次为json，本文要设置为“text/plain”
+          binder: defaultRabbit #设置要绑定的消息服务的具体设置
+          group: evildoerA      # 添加分组后自动持久化(让多个消费者处于相同分组竞争关系, 可以解决重复消费问题)
+    sentinel:
+      transport:
+        #配置Sentinel dashboard地址
+        dashboard: localhost:8080
+        # 默认8719端口，假如被占用了会自动从8719端口+1进行扫描，直到找到未被占用的 端口
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: halo-user-provider
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
