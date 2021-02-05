@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>halo-admin</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>halo-examination</artifactId>
 
+    <packaging>pom</packaging>
     <modules>
-        <module>admin-api</module>
-        <module>admin-serve</module>
+        <module>examination-api</module>
+        <module>examination-serve</module>
     </modules>
 
     <properties>
@@ -28,7 +28,7 @@
             <version>${halo.version}</version>
         </dependency>
 
-        <!-- spring cloud 2020.0.0内置的openfeign3.0.0和spring cloud alibaba框架nacos、seata冲突临时解决方案-->
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -65,5 +65,4 @@
         </dependency>
 
     </dependencies>
-
 </project>

@@ -29,28 +29,16 @@ spring:
             - Path=/halo-admin/**
           filters:
             - StripPrefix=1
-        - id: mall-oms
-          uri: lb://mall-oms
+        - id: halo-question
+          uri: lb://halo-question
           predicates:
-            - Path=/mall-oms/**
+            - Path=/halo-question/**
           filters:
             - StripPrefix=1
-        - id: mall-pms
-          uri: lb://mall-pms
+        - id: halo-examination
+          uri: lb://halo-examination
           predicates:
-            - Path=/mall-pms/**
-          filters:
-            - StripPrefix=1
-        - id: mall-ums
-          uri: lb://mall-ums
-          predicates:
-            - Path=/mall-ums/**
-          filters:
-            - StripPrefix=1
-        - id: mall-sms
-          uri: lb://mall-sms
-          predicates:
-            - Path=/mall-sms/**
+            - Path=/halo-examination/**
           filters:
             - StripPrefix=1
 

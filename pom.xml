@@ -14,6 +14,8 @@
         <module>halo-gateway</module>
         <module>halo-auth</module>
         <module>halo-admin</module>
+        <module>halo-question</module>
+        <module>halo-examination</module>
     </modules>
 
     <parent>
