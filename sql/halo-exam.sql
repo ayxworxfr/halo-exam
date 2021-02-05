@@ -62,8 +62,8 @@ CREATE TABLE `exam`  (
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '试卷标签(多个标签用&分隔)',
-  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `gmt_create` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -115,8 +115,8 @@ CREATE TABLE `paper`  (
   `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '试卷标签(多个标签用&分隔)',
   `heat` bigint(255) NULL DEFAULT NULL COMMENT '试卷热度',
   `status` int(255) NULL DEFAULT NULL COMMENT '试卷状态 1-公开(默认) 2私有',
-  `create_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `gmt_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建时间',
+  `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `create_by` bigint(20) NULL DEFAULT NULL,
   `update_by` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
@@ -177,8 +177,8 @@ CREATE TABLE `question`  (
   `label` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '题目标签(多个标签用&分隔)',
   `heat` bigint(255) NULL DEFAULT NULL COMMENT '题目热度',
   `status` int(255) NULL DEFAULT NULL COMMENT '问题状态 1-公开(默认) 2私有',
-  `create_time` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
-  `update_time` datetime(0) NULL DEFAULT NULL,
+  `gmt_create` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
+  `gmt_modified` datetime(0) NULL DEFAULT NULL,
   `create_by` bigint(255) NULL DEFAULT NULL,
   `update_by` bigint(20) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,

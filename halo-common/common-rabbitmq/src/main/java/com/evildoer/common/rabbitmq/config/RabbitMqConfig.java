@@ -15,7 +15,6 @@ import javax.annotation.PostConstruct;
 
 /**
  * @author huawei
- * @desc
  * @email huawei_code@163.com
  * @date 2021/1/17
  */
@@ -29,8 +28,6 @@ public class RabbitMqConfig {
 
     /**
      * 使用json序列化机制，进行消息转换
-     *
-     * @return
      */
     @Bean
     public MessageConverter messageConverter() {
