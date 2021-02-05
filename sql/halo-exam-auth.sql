@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 04/02/2021 15:45:08
+ Date: 05/02/2021 13:36:15
 */
 
 SET NAMES utf8mb4;
@@ -87,8 +87,8 @@ CREATE TABLE `oauth_client_details`  (
 -- ----------------------------
 -- Records of oauth_client_details
 -- ----------------------------
-INSERT INTO `oauth_client_details` VALUES ('youlai-admin', NULL, '123456', 'all', 'password,client_credentials,refresh_token', NULL, NULL, 3600, 7200, NULL, NULL);
-INSERT INTO `oauth_client_details` VALUES ('youlai-mall-weapp', NULL, '123456', 'all', 'authorization_code,password,refresh_token', NULL, NULL, 3600, 7200, NULL, 'true');
+INSERT INTO `oauth_client_details` VALUES ('halo-admin', NULL, '123456', 'all', 'password,client_credentials,refresh_token', NULL, NULL, 3600, 7200, NULL, NULL);
+INSERT INTO `oauth_client_details` VALUES ('halo-mall-weapp', NULL, '123456', 'all', 'authorization_code,password,refresh_token', NULL, NULL, 3600, 7200, NULL, 'true');
 
 -- ----------------------------
 -- Table structure for sys_class
@@ -131,7 +131,7 @@ CREATE TABLE `sys_dept`  (
   `gmt_create` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '部门表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dept
@@ -153,7 +153,7 @@ CREATE TABLE `sys_dict`  (
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `type_code`(`code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典类型表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict
@@ -178,7 +178,7 @@ CREATE TABLE `sys_dict_item`  (
   `gmt_create` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '字典数据表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_dict_item
@@ -224,7 +224,7 @@ CREATE TABLE `sys_menu`  (
   `gmt_create` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -269,7 +269,7 @@ CREATE TABLE `sys_menu_test`  (
   `gmt_create` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单管理' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu_test
@@ -311,12 +311,12 @@ CREATE TABLE `sys_permission`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id`(`id`, `name`) USING BTREE,
   INDEX `id_2`(`id`, `name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '权限表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_permission
 -- ----------------------------
-INSERT INTO `sys_permission` VALUES (1, '系统管理', '/youlai-admin/**', 1, 1, NULL, NULL);
+INSERT INTO `sys_permission` VALUES (1, '系统管理', '/halo-admin/**', 1, 1, NULL, NULL);
 INSERT INTO `sys_permission` VALUES (9, '营销管理', '/mall-sms/**', 1, 9, '2020-10-24 15:29:01', '2020-10-24 15:29:09');
 INSERT INTO `sys_permission` VALUES (12, '订单管理', '/mall-oms/**', 1, 13, '2020-10-31 10:40:35', '2020-10-31 10:40:35');
 INSERT INTO `sys_permission` VALUES (13, '会员管理', '/mall-ums/**', 1, 15, '2020-10-31 10:41:08', '2020-10-31 10:41:08');
@@ -338,7 +338,7 @@ CREATE TABLE `sys_role`  (
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name`(`name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_role
@@ -448,12 +448,13 @@ CREATE TABLE `sys_user`  (
   `gmt_modified` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `login_name`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1354604176387670018 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES (1, 'admin', '系统管理员', 1, '$2a$10$dLq3.pXNwTNqWabsRfJX4ej8Htk/vUWuHh.LvITq5BrU8u.dYvZpC', 1, 0, 'https://i.loli.net/2020/05/08/dVvpaQ8NHkWAC2c.jpg', '17621210366', 1, '1490493387@qq.com', '2019-10-10 13:41:22', '2021-01-26 13:56:05');
+INSERT INTO `sys_user` VALUES (2, 'test', '测试用户', 1, '$2a$10$dLq3.pXNwTNqWabsRfJX4ej8Htk/vUWuHh.LvITq5BrU8u.dYvZpC', 1, 0, 'https://i.loli.net/2020/05/08/dVvpaQ8NHkWAC2c.jpg', NULL, 1, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -470,6 +471,7 @@ CREATE TABLE `sys_user_role`  (
 -- ----------------------------
 INSERT INTO `sys_user_role` VALUES (1, 1);
 INSERT INTO `sys_user_role` VALUES (1, 2);
+INSERT INTO `sys_user_role` VALUES (2, 2);
 
 -- ----------------------------
 -- Table structure for undo_log

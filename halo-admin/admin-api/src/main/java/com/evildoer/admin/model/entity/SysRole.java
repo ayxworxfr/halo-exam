@@ -10,7 +10,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@TableName(value = "sys_role_test")
+@TableName(value = "sys_role")
 public class SysRole extends BaseEntity {
 
     @TableId(type= IdType.AUTO)

@@ -73,9 +73,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         tokenEnhancers.add(jwtAccessTokenConverter());
         tokenEnhancerChain.setTokenEnhancers(tokenEnhancers);
 
-        endpoints
-
-                .authenticationManager(authenticationManager)
+        endpoints.authenticationManager(authenticationManager)
                 .accessTokenConverter(jwtAccessTokenConverter())
                 .tokenEnhancer(tokenEnhancerChain)
                 .userDetailsService(userDetailsService)
@@ -102,7 +100,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     /**
      * 自定义认证异常响应数据
-     * @return
      */
     @Bean
     public AuthenticationEntryPoint authenticationEntryPoint() {

@@ -16,7 +16,6 @@ public class AuthExceptionHandler {
      * 用户名和密码异常
      *
      * @param e
-     * @return
      */
     @ExceptionHandler(InvalidGrantException.class)
     public Result handleInvalidGrantException(InvalidGrantException e) {
@@ -28,7 +27,6 @@ public class AuthExceptionHandler {
      * 账户异常(禁用、锁定、过期)
      *
      * @param e
-     * @return
      */
     @ExceptionHandler({InternalAuthenticationServiceException.class})
     public Result handleInternalAuthenticationServiceException(InternalAuthenticationServiceException e) {

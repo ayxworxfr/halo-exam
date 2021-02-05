@@ -17,8 +17,6 @@ feign:
   okhttp:
     enabled: true
 mybatis-plus:
-  global-config:
-    banner: false
   configuration:
     # 驼峰下划线转换
     map-underscore-to-camel-case: true

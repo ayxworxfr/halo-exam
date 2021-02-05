@@ -137,7 +137,6 @@ public class UserController extends BaseController {
      * 提供用于用户登录认证需要的用户信息
      *
      * @param username
-     * @return
      */
     @ApiOperation(value = "根据用户名获取用户信息", httpMethod = "GET")
     @ApiImplicitParam(name = "username", value = "用户名", required = true, paramType = "path", dataType = "String")

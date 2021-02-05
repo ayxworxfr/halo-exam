@@ -58,7 +58,6 @@ spring:
 whitelist:
   urls:
       - "/halo-auth/oauth/token"
-      - "/doc.html"
 
 # 是否演示环境
 demo: false
