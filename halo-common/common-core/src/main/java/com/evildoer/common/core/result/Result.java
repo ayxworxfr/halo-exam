@@ -25,12 +25,35 @@ public class Result<T> implements Serializable {
         return success(null);
     }
 
+    public static <T> Result<T> success(String msg) {
+        Result<T> result = new Result<T>();
+        result.setMsg(msg);
+        result.setCode(ResultCode.SUCCESS.getCode());
+        return result;
+    }
+
     public static <T> Result<T> success(T data) {
         ResultCode rce = ResultCode.SUCCESS;
         if (data instanceof Boolean && Boolean.FALSE.equals(data)) {
             rce = ResultCode.SYSTEM_EXECUTION_ERROR;
         }
         return result(rce, data);
+    }
+
+    public static <T> Result<T> success(String msg, T data) {
+        Result<T> result = new Result<T>();
+        result.setMsg(msg);
+        result.setData(data);
+        result.setCode(ResultCode.SUCCESS.getCode());
+        return result;
+    }
+
+    public static <T> Result<T> success(String code, String msg, T data) {
+        Result<T> result = new Result<T>();
+        result.setMsg(msg);
+        result.setCode(code);
+        result.setData(data);
+        return result;
     }
 
 
@@ -60,18 +83,18 @@ public class Result<T> implements Serializable {
 
     private static <T> Result<T> result(String code, String msg, T data) {
         Result<T> result = new Result<T>();
+        result.setMsg(msg);
         result.setCode(code);
         result.setData(data);
-        result.setMsg(msg);
         return result;
     }
 
     public static <T> Result<T> success(T data, Long total) {
         Result<T> result = new Result();
-        result.setCode(ResultCode.SUCCESS.getCode());
-        result.setMsg(ResultCode.SUCCESS.getMsg());
         result.setData(data);
         result.setTotal(total.intValue());
+        result.setMsg(ResultCode.SUCCESS.getMsg());
+        result.setCode(ResultCode.SUCCESS.getCode());
         return result;
     }
 

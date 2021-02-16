@@ -1,0 +1,14 @@
+[
+    {
+    "count": 1,
+    "grade": 2,
+    "resource": "/testA",
+    "timeWindow": 5
+    }
+]
+/*
+    resource：资源名称
+    grade：降级策略 0 RT 1 异常⽐例 2 异常数
+    count：阈值
+    timeWindow：时间窗
+*/

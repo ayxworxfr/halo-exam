@@ -33,6 +33,8 @@
         <spring-cloud.version>2020.0.0</spring-cloud.version>
         <spring.zipkin.version>2.2.6.RELEASE</spring.zipkin.version>
         <spring-cloud-alibaba.version>2.2.4.RELEASE</spring-cloud-alibaba.version>
+        <sentinel.version>2.2.1.RELEASE</sentinel.version>
+        <sentinel-nacos.version>1.8.0</sentinel-nacos.version>
         <hutool.version>5.5.7</hutool.version>
         <mysql.version>8.0.19</mysql.version>
         <druid.version>1.1.23</druid.version>
@@ -77,6 +79,20 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+<!--            &lt;!&ndash; SpringCloud ailibaba sentinel&ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
+<!--                <version>${sentinel.version}</version>-->
+<!--            </dependency>-->
+<!--            &lt;!&ndash; SpringCloud ailibaba sentinel-datasource-nacos 持久化需要用到&ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba.csp</groupId>-->
+<!--                <artifactId>sentinel-datasource-nacos</artifactId>-->
+<!--                <version>${sentinel-nacos.version}</version>-->
+<!--            </dependency>-->
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-zipkin</artifactId>

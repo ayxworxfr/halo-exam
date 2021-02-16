@@ -13,15 +13,21 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.evildoer.exam</groupId>
+            <artifactId>common-knife4j</artifactId>
+            <version>${halo.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.evildoer.exam</groupId>
-            <artifactId>examination-api</artifactId>
-            <version>${halo.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.evildoer.exam</groupId>-->
+<!--            <artifactId>examination-api</artifactId>-->
+<!--            <version>${halo.version}</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>com.evildoer.exam</groupId>

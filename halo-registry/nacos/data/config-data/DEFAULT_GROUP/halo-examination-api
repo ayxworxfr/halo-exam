@@ -1,4 +1,4 @@
-# halo-examination
+# halo-examination-api
 spring:
   zipkin:
     base-url: http://localhost:9411
@@ -7,6 +7,9 @@ spring:
       # 采样率值介于0到1之间, 1则表示全部采集
       probability: 1
   cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
     stream:
       binders: #在此处配置要绑定的rabbitmq的服务信息
         defaultRabbit: #表示定义的名称，用于binding整合
@@ -19,10 +22,11 @@ spring:
                 username: guest
                 password: guest
       bindings: #服务的整合处理
-        output: #这个名字是一个通道的名称
+        input: #这个名字是一个通道的名称
           destination: examExchange #表示要使用的Exchange名称定义
           content-type: application/json #设置消息类型，本次为json，本文要设置为“text/plain”
           binder: defaultRabbit #设置要绑定的消息服务的具体设置
+          group: evildoerA      # 添加分组后自动持久化(让多个消费者处于相同分组竞争关系, 可以解决重复消费问题)
     sentinel:
       transport:
         #配置Sentinel dashboard地址
@@ -34,33 +38,35 @@ spring:
         flow:
           nacos:
             server-addr: ${spring.cloud.nacos.discovery.server-addr}
-            data-id: ${spring.application.name}-flow-rules
+            #data-id: ${spring.application.name}-flow-rules
+            data-id: halo-examination-api-flows-rules
             group-id: DEFAULT_GROUP
             data-type: json
             rule-type: flow
         degrade:
           nacos:
             server-addr: ${spring.cloud.nacos.discovery.server-addr}
-            data-id: ${spring.application.name}-degrade-rules
+            #data-id: ${spring.application.name}-degrade-rules
+            data-id: halo-examination-api-degrade-rules
             group-id: DEFAULT_GROUP
             data-type: json
             rule-type: degrade
-    
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/halo-exam?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true
-    username: root
-    password: 123456
 
-mybatis-plus:
-  global-config:
-    banner: false
-  configuration:
-    # 驼峰下划线转换
-    map-underscore-to-camel-case: true
-    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#设置feign客户端超时时间（OpenFeign默认支持ribbon）
+ribbon:
+  #指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的实际
+  ReadTimeout: 5000
+  #指的是建立连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    #feign日志以什么级别监控那个接口
+    com.evildoer.examination.api.PaymentService: debug
+
+#消费者将去访问的微服务名称（注册成功进nacos的微服务提供者）
+service-url:
+  nacos-service: http://halo-examination
 
 management:
   endpoints:
