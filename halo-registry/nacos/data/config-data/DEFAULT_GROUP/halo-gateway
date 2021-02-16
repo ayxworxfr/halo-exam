@@ -41,11 +41,18 @@ spring:
             - Path=/halo-examination/**
           filters:
             - StripPrefix=1
+        - id: halo-examination-api
+          uri: lb://halo-examination-api
+          predicates:
+            - Path=/halo-examination-api/**
+          filters:
+            - StripPrefix=1
 
 # 配置白名单路径(无需登录)
 whitelist:
   urls:
       - "/halo-auth/oauth/token"
+      - "/halo-examination-api"
 
 # 是否演示环境
 demo: false
