@@ -9,7 +9,7 @@ import com.evildoer.admin.model.entity.SysRoleMenu;
 import com.evildoer.admin.service.ISysRoleMenuService;
 import com.evildoer.admin.service.ISysRoleService;
 import com.evildoer.common.core.constant.SystemConstants;
-import com.evildoer.common.core.enums.QueryModeEnum;
+import com.evildoer.common.core.enums.QueryMode;
 import com.evildoer.common.core.result.Result;
 import com.evildoer.common.core.result.ResultCode;
 import io.swagger.annotations.Api;
@@ -49,8 +49,8 @@ public class RoleController {
             Integer limit,
             String name
     ) {
-        QueryModeEnum queryModeEnum = QueryModeEnum.getValue(queryMode);
-        switch (queryModeEnum) {
+        QueryMode mode = QueryMode.getValue(queryMode);
+        switch (mode) {
             case PAGE:
                 LambdaQueryWrapper<SysRole> queryWrapper = new LambdaQueryWrapper<SysRole>()
                         .like(StrUtil.isNotBlank(name), SysRole::getName, name)

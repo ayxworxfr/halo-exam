@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.evildoer.admin.common.AdminConstant;
 import com.evildoer.admin.model.entity.SysDept;
 import com.evildoer.admin.service.ISysDeptService;
-import com.evildoer.common.core.enums.QueryModeEnum;
+import com.evildoer.common.core.enums.QueryMode;
 import com.evildoer.common.core.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -45,10 +45,10 @@ public class DeptController {
                 .orderByAsc(SysDept::getSort)
                 .orderByDesc(SysDept::getGmtModified)
                 .orderByDesc(SysDept::getGmtCreate);
-        QueryModeEnum queryModeEnum = QueryModeEnum.getValue(queryMode);
+        QueryMode mode = QueryMode.getValue(queryMode);
 
         List list;
-        switch (queryModeEnum){
+        switch (mode){
             case TREE:
                 baseQuery = baseQuery.like(StrUtil.isNotBlank(name), SysDept::getName, name)
                         .eq(status != null, SysDept::getStatus, status);

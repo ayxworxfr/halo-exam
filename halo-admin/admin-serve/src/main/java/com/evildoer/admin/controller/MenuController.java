@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.evildoer.admin.model.entity.SysMenu;
 import com.evildoer.admin.service.ISysMenuService;
 import com.evildoer.admin.service.ISysRoleMenuService;
-import com.evildoer.common.core.enums.QueryModeEnum;
+import com.evildoer.common.core.enums.QueryMode;
 import com.evildoer.common.core.result.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -41,14 +41,14 @@ public class MenuController {
     @GetMapping
     public Result list(String queryMode, String name, Long roleId) {
 
-        QueryModeEnum queryModeEnum = QueryModeEnum.getValue(queryMode);
+        QueryMode mode = QueryMode.getValue(queryMode);
 
         LambdaQueryWrapper<SysMenu> baseQuery = new LambdaQueryWrapper<SysMenu>()
                 .orderByAsc(SysMenu::getSort)
                 .orderByDesc(SysMenu::getGmtModified)
                 .orderByDesc(SysMenu::getGmtCreate);
         List list;
-        switch (queryModeEnum) {
+        switch (mode) {
             case TREE:
                 baseQuery = baseQuery.like(StrUtil.isNotBlank(name), SysMenu::getName, name);
                 list = iSysMenuService.listForTree(baseQuery);

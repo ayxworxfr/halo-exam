@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.evildoer.admin.model.entity.SysDictItem;
 import com.evildoer.admin.service.ISysDictItemService;
-import com.evildoer.common.core.enums.QueryModeEnum;
+import com.evildoer.common.core.enums.QueryMode;
 import com.evildoer.common.core.result.Result;
 import com.evildoer.common.core.result.ResultCode;
 import io.swagger.annotations.Api;
@@ -47,8 +47,8 @@ public class DictItemController {
             String name,
             String dictCode
     ) {
-        QueryModeEnum queryModeEnum = QueryModeEnum.getValue(queryMode);
-        switch (queryModeEnum) {
+        QueryMode mode = QueryMode.getValue(queryMode);
+        switch (mode) {
             case PAGE:
                 IPage<SysDictItem> result = iSysDictItemService.list(new Page<>(page, limit), new SysDictItem().setName(name).setDictCode(dictCode));
                 return Result.success(result.getRecords(), result.getTotal());

@@ -9,7 +9,7 @@ import com.evildoer.admin.model.entity.SysDict;
 import com.evildoer.admin.model.entity.SysDictItem;
 import com.evildoer.admin.service.ISysDictItemService;
 import com.evildoer.admin.service.ISysDictService;
-import com.evildoer.common.core.enums.QueryModeEnum;
+import com.evildoer.common.core.enums.QueryMode;
 import com.evildoer.common.core.result.Result;
 import com.evildoer.common.core.result.ResultCode;
 import io.swagger.annotations.Api;
@@ -48,12 +48,12 @@ public class DictController {
             Integer page,
             Integer limit,
             String name) {
-        QueryModeEnum queryModeEnum = QueryModeEnum.getValue(queryMode);
+        QueryMode mode = QueryMode.getValue(queryMode);
         LambdaQueryWrapper<SysDict> queryWrapper = new LambdaQueryWrapper<SysDict>()
                 .like(StrUtil.isNotBlank(name), SysDict::getName, StrUtil.trimToNull(name))
                 .orderByDesc(SysDict::getGmtModified)
                 .orderByDesc(SysDict::getGmtCreate);
-        switch (queryModeEnum) {
+        switch (mode) {
             case PAGE:
                 Page<SysDict> result = iSysDictService.page(new Page<>(page, limit), queryWrapper);
                 return Result.success(result.getRecords(), result.getTotal());

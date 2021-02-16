@@ -20,6 +20,8 @@ public class Exam extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
+    private String id;
+
     /**
      * 考试名称
      */

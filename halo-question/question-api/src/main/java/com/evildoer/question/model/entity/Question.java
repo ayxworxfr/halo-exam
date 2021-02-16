@@ -22,6 +22,8 @@ public class Question extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
+    private String id;
+
     /**
      * 题目类型 1-选择题 2-多选题 3-填空题 4-简答题
      */

@@ -2,6 +2,8 @@ package com.evildoer.examination.service;
 
 import com.evildoer.examination.model.entity.Exam;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.evildoer.examination.model.query.ExamQuery;
+import com.github.pagehelper.PageInfo;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IExamService extends IService<Exam> {
 
+    PageInfo<Exam> list(ExamQuery query);
 }

@@ -39,6 +39,7 @@
         <mysql.version>8.0.19</mysql.version>
         <druid.version>1.1.23</druid.version>
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <pagehelper.version>5.2.0</pagehelper.version>
         <minio.version>7.1.0</minio.version>
         <knife4j.version>2.0.4</knife4j.version>
         <weixin-java-miniapp.version>4.0.3.B</weixin-java-miniapp.version>
@@ -116,6 +117,12 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
 
             <dependency>

@@ -3,7 +3,7 @@ package com.evildoer.common.core.enums;
 import lombok.Getter;
 import lombok.Setter;
 
-public enum QueryModeEnum {
+public enum QueryMode {
 
     PAGE("page", "分页查询"),
     LIST("list","列表查询"),
@@ -17,12 +17,12 @@ public enum QueryModeEnum {
     @Setter
     private String code;
 
-    QueryModeEnum(String code, String desc) {
+    QueryMode(String code, String desc) {
         this.code=code;
     }
 
-    public static QueryModeEnum getValue(String code){
-        for (QueryModeEnum value : values()) {
+    public static QueryMode getValue(String code){
+        for (QueryMode value : values()) {
             if (value.getCode().equals(code)) {
                 return value;
             }

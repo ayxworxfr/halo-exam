@@ -9,7 +9,7 @@ import com.evildoer.admin.model.entity.SysRolePermission;
 import com.evildoer.admin.model.vo.PermissionVO;
 import com.evildoer.admin.service.ISysPermissionService;
 import com.evildoer.admin.service.ISysRolePermissionService;
-import com.evildoer.common.core.enums.QueryModeEnum;
+import com.evildoer.common.core.enums.QueryMode;
 import com.evildoer.common.core.result.Result;
 import com.evildoer.common.core.result.ResultCode;
 import io.swagger.annotations.Api;
@@ -55,9 +55,9 @@ public class PermissionController {
             Long menuId,
             Integer type
     ) {
-        QueryModeEnum queryModeEnum = QueryModeEnum.getValue(queryMode);
+        QueryMode mode = QueryMode.getValue(queryMode);
 
-        switch (queryModeEnum) {
+        switch (mode) {
             case TREE:
                 LambdaQueryWrapper<SysPermission> queryWrapper = new LambdaQueryWrapper<SysPermission>()
                         .like(StrUtil.isNotBlank(name), SysPermission::getName, name)
