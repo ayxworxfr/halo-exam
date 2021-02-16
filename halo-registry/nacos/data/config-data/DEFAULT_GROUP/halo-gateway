@@ -51,6 +51,7 @@ spring:
 # 配置白名单路径(无需登录)
 whitelist:
   urls:
+      - "/doc.html"
       - "/halo-auth/oauth/token"
       - "/halo-examination-api"
 

@@ -22,6 +22,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.evildoer.exam</groupId>
+            <artifactId>common-knife4j</artifactId>
+            <version>${halo.version}</version>
+        </dependency>
+
         <!-- SpringCloud ailibaba sentinel-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

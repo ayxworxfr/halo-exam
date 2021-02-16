@@ -11,6 +11,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 public class CustomClientCredentialsTokenEndpointFilter extends ClientCredentialsTokenEndpointFilter {
 
     private AuthorizationServerSecurityConfigurer configurer;
+
     private AuthenticationEntryPoint authenticationEntryPoint;
 
     public CustomClientCredentialsTokenEndpointFilter(AuthorizationServerSecurityConfigurer configurer) {
